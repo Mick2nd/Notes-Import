@@ -1,0 +1,69 @@
+{
+	"version": 1,
+	
+	"loggers":
+	{
+		"Gui":
+		{
+			"level": "DEBUG",
+			"handlers": ["console", "file"],
+			"propagate": 0
+		},
+		 
+		"Importer":
+		{
+			"level": "DEBUG",
+			"handlers": ["console", "file"],
+			"propagate": 0
+		},
+		 
+		"raw":
+		{
+			"level": "DEBUG",
+			"handlers": ["console", "file"],
+			"propagate": 0
+		} 		
+	},
+	
+	"root":
+	{
+		"level": "NOTSET",
+		"handlers": ["console", "file"]
+	},
+
+	"handlers":
+	{
+		"console":
+		{
+			"class": "logging.StreamHandler",
+			"level": "INFO",
+			"formatter": "con",
+			"stream": "ext://sys.stdout"
+		}, 
+		
+		"file":
+		{
+			"class": "logging.handlers.TimedRotatingFileHandler",
+			"encoding": "utf-8",
+			"level": "DEBUG",
+			"formatter": "std",
+			"filename": "./LoggingFiles/Logging.log",
+			"backupCount": 10,
+			"when": "D"
+		}
+	},
+
+	"formatters":
+	{
+		"std":
+		{
+			"()": "custom_formatter.CustomFormatter",
+			"format": "%(asctime)s - %(name)s - %(levelname)s : %(message)s."
+		},
+		"con":
+		{
+			"()": "custom_formatter.CustomFormatter",
+			"format": "%(levelname)s : %(message)s."
+		}
+	}
+}
