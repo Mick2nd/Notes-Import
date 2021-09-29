@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'D:\Users\jsoft\Programmieren\workspace-2020-09\Notes Import - Python\src\gui.ui'
+# Form implementation generated from reading ui file 'D:\Users\jsoft\Programmieren\workspace-2020-09\Notes Import - Python\NotesImport\gui.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.1
 #
@@ -70,10 +70,19 @@ class Ui_Dialog(object):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
         self.labelExe.setText(_translate("Dialog", "Joplin Exe:"))
+        self.lineEditExe.setToolTip(_translate("Dialog", "<html><head/><body><p>Contains the path to the <span style=\" font-style:italic;\">Joplin</span> exe. Can be used to invoke <span style=\" font-style:italic;\">Joplin</span> to prepare it for the import.</p></body></html>"))
+        self.pushButtonExe.setToolTip(_translate("Dialog", "<html><head/><body><p>Used to select the <span style=\" font-style:italic;\">Joplin</span> exe.</p></body></html>"))
         self.pushButtonExe.setText(_translate("Dialog", "..."))
         self.labelToken.setText(_translate("Dialog", "Joplin Token:"))
+        self.lineEditToken.setToolTip(_translate("Dialog", "<html><head/><body><p>Used to store the <span style=\" font-style:italic;\">Joplin</span> access token to access the <span style=\" font-style:italic;\">Joplin Data API</span>.</p></body></html>"))
+        self.pushButtonInvokeExe.setToolTip(_translate("Dialog", "<html><head/><body><p>Used to invoke <span style=\" font-style:italic;\">Joplin</span>.</p></body></html>"))
         self.pushButtonInvokeExe.setText(_translate("Dialog", "Invoke Joplin"))
         self.labelInsertion.setText(_translate("Dialog", "Insertion Point:"))
+        self.lineEditInsertion.setToolTip(_translate("Dialog", "<html><head/><body><p>Contains the title of the book where to store the imported<span style=\" font-style:italic;\"> QNAP Notes Station</span> notebooks.</p></body></html>"))
         self.labelArchive.setText(_translate("Dialog", "Archive:"))
+        self.lineEditArchive.setToolTip(_translate("Dialog", "<html><head/><body><p>Used to store the selected <span style=\" font-style:italic;\">QNAP Notes Station</span> export file.</p></body></html>"))
+        self.pushButtonArchive.setToolTip(_translate("Dialog", "<html><head/><body><p>Used to select <span style=\" font-style:italic;\">QNAP Notes Station</span> export file.</p></body></html>"))
         self.pushButtonArchive.setText(_translate("Dialog", "..."))
+        self.pushButtonGo.setToolTip(_translate("Dialog", "<html><head/><body><p>Starts the import process. This may take a while. Progress information is stored in the text box below.</p></body></html>"))
         self.pushButtonGo.setText(_translate("Dialog", "Go"))
+        self.textEditOutput.setToolTip(_translate("Dialog", "<html><head/><body><p>Text box to display progress information and status info.</p></body></html>"))

@@ -1,0 +1,1 @@
+include NotesImport/ConfigFiles/*.* NotesImport/LoggingFiles/*.*

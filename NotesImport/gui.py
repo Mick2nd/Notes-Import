@@ -11,11 +11,13 @@ It is relative to current working directory which is src
 '''
 
 import sys
-from os.path import join
+from os.path import join, abspath, dirname
+from os import chdir
 import json
 from contextlib import contextmanager
 from subprocess import call
 from PyQt5.QtWidgets import QDialog, QApplication, QMessageBox, QFileDialog
+#from inspect import __file__
 
 from gui_ui import Ui_Dialog
 from stdout_redirector import StdoutRedirector
@@ -34,17 +36,29 @@ class Gui(QDialog, Ui_Dialog):
         '''
         QDialog.__init__(self, parent = None)
         self.setupUi(self)
-        sys.stdout = StdoutRedirector(self.textEditOutput)
         
         self.app = app
         self.argv = argv
         
         self.path = '.'                                             # environ['PROJECT_LOC']
-        self.logger = LoggingFactory(self.path).getLogger(self)
-        self.logger.info('Initializing the dialog')
-
         self._wire_handlers()
         self._readConfig()
+
+
+    @classmethod
+    def main(cls):
+        '''
+        The main method
+        '''
+        folder = dirname(abspath(__file__))
+        print(folder)
+        chdir(folder)
+        
+        app = QApplication(sys.argv)
+        app.setStyle('Fusion')
+        control = Gui(app, sys.argv)
+        control.open()
+        app.exec_()
 
 
     def _wire_handlers(self):
@@ -96,6 +110,20 @@ class Gui(QDialog, Ui_Dialog):
             
         except BaseException as _:
             self.logger.exception('Exception during command execution')
+
+
+    def open(self, *args, **kwargs):
+        '''
+        Override
+        '''
+        result = QDialog.open(self, *args, **kwargs)
+        
+        self.redirector = StdoutRedirector(self.textEditOutput)
+        sys.stdout = self.redirector
+        self.logger = LoggingFactory(self.path).getLogger(self)
+        self.logger.info('Initializing the dialog')
+
+        return result
 
 
     def accept(self, *args, **kwargs):
@@ -179,8 +207,4 @@ class Gui(QDialog, Ui_Dialog):
         
 if __name__ == '__main__':
     
-    app = QApplication(sys.argv)
-    app.setStyle('Fusion')
-    control = Gui(app, sys.argv)
-    control.open()
-    app.exec_()
+    Gui.main()
