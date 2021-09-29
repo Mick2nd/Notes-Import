@@ -31,12 +31,12 @@
 This will install the distribution in a virtual environment and invoke the GUI
  1. Copy the whole content of the project folder into a chosen local folder
  1. Open a terminal window inside the local folder
- 1. >pipenv install
- 1. >pipenv shell
- 1. >cd NotesImport
- 1. >python
- 1. >>>from gui import Gui
- 1. >>>gui.main()
+ 1. `>`pipenv install
+ 1. `>`pipenv shell
+ 1. `>`cd NotesImport
+ 1. `>`python
+ 1. `>>>`from gui import Gui
+ 1. `>>>`gui.main()
  
  The GUI is more or less self-explanatory and shows tool tips on the controls.
  
