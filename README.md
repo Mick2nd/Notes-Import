@@ -36,9 +36,12 @@ This will install the distribution in a virtual environment and invoke the GUI
  1. `>`cd NotesImport
  1. `>`python
  1. `>>>`from gui import Gui
- 1. `>>>`gui.main()
+ 1. `>>>`Gui.main()
+
+### Simplified Method
+Simply invoke the startup script (Linux or Windows Powershell)
+
+The GUI is more or less self-explanatory and shows tool tips on the controls.
  
- The GUI is more or less self-explanatory and shows tool tips on the controls.
- 
- There is ongoing work to simplify the usage of the code.
+There is ongoing work to simplify the usage of the code.
  

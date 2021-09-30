@@ -11,13 +11,12 @@ It is relative to current working directory which is src
 '''
 
 import sys
-from os.path import join, abspath, dirname
-from os import chdir
+from os.path import join, abspath, dirname, exists
+from os import chdir, mkdir
 import json
 from contextlib import contextmanager
 from subprocess import call
 from PyQt5.QtWidgets import QDialog, QApplication, QMessageBox, QFileDialog
-#from inspect import __file__
 
 from gui_ui import Ui_Dialog
 from stdout_redirector import StdoutRedirector
@@ -115,8 +114,13 @@ class Gui(QDialog, Ui_Dialog):
     def open(self, *args, **kwargs):
         '''
         Override
+        We must be sure the Text Widget exists before starting logging
         '''
         result = QDialog.open(self, *args, **kwargs)
+        
+        folder = join(self.path, 'LoggingFiles')
+        if not exists(folder):
+            mkdir(folder)
         
         self.redirector = StdoutRedirector(self.textEditOutput)
         sys.stdout = self.redirector
