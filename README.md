@@ -39,7 +39,7 @@ This will install the distribution in a virtual environment and invoke the GUI
  1. `>>>`Gui.main()
 
 ### Simplified Method
-Simply invoke the startup script (Linux or Windows Powershell)
+Simply invoke the startup script (Linux or Windows Powershell) from inside the installation folder.
 
 The GUI is more or less self-explanatory and shows tool tips on the controls.
  
